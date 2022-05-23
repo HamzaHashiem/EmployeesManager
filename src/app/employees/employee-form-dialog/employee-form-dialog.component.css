@@ -1,0 +1,40 @@
+.px5 {
+  padding-inline: 5px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.form-element {
+  margin-bottom: 5px;
+}
+.mb15 {
+  margin-bottom: 15px;
+}
+
+:host
+  ::ng-deep
+  .employee-form
+  .mat-slide-toggle:not(.mat-checked):not(.mat-disabled)
+  .mat-slide-toggle-bar {
+  background-color: rgba(255, 64, 129, 0.54);
+}
+
+:host
+  ::ng-deep
+  .employee-form
+  .mat-slide-toggle:not(.mat-checked):not(.mat-disabled)
+  .mat-slide-toggle-thumb {
+  background-color: #ff4081;
+}
+
+.employee-form__title {
+  margin-top: 0;
+}
+
+@media (max-width: 599px) {
+  .employee-form__title {
+    font-size: 25px;
+  }
+}

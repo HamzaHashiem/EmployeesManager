@@ -1,0 +1,60 @@
+<div class="container employee-form" novalidate>
+  <h1 class="employee-form__title">
+    {{data?.employee?.id ? 'Edit Employee' : 'Add Employee'}}
+  </h1>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form">
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Email address" formControlName="email">
+      <mat-error *ngIf="!formGroup.controls['email'].valid && formGroup.controls['email'].touched">
+        {{ getErrorEmail() }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Full name" formControlName="fullName">
+      <mat-error *ngIf="!formGroup.controls['fullName'].valid && formGroup.controls['fullName'].touched">
+        Full name is required!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Phone number"
+      appFullPhoneMask formControlName="phone">
+      <mat-error *ngIf="!formGroup.controls['phone'].valid && formGroup.controls['phone'].touched">
+        Phone number is required!
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-element mb15">
+      <span>Female</span><mat-slide-toggle color="primary" class="px5" formControlName="gender"></mat-slide-toggle><span>Male</span>
+    </div>
+
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Company" formControlName="company">
+      <mat-error *ngIf="!formGroup.controls['company'].valid && formGroup.controls['company'].touched">
+        Company is required!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <input matInput placeholder="Position" formControlName="position">
+      <mat-error *ngIf="!formGroup.controls['position'].valid && formGroup.controls['position'].touched">
+        Position is required!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-element">
+      <input (click)="picker1.open()" matInput placeholder="Birthdate" formControlName="dob" [matDatepicker]="picker1" />
+      <mat-datepicker-toggle matPrefix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+      <mat-error *ngIf="!formGroup.controls['dob'].valid && formGroup.controls['dob'].touched">
+        Birthdate is required!
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-element">
+      <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">{{data?.employee?.id ? 'Edit Employee' : 'Add Employee'}}</button>
+    </div>
+
+  </form>
+</div>
